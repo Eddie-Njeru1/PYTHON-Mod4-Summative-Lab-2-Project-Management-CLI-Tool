@@ -39,6 +39,6 @@ class Project:
                 return project #When found
             return None #When not found
         
-        def __repr__(self):
+    def __repr__(self):
             return f"Project(id={self.id}, title={self.title}, owner={self.owner.name}, tasks={len(self.tasks)})" #Display project object
         
