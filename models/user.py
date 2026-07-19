@@ -26,7 +26,7 @@ class User(Person):
         for user in cls.all_users:
             if user.name == name:
                 return user
-            return None #When no match is found
+        return None #When no match is found
         
     def __repr__(self):
         return f"user(id={self.id}, name={self.name}, email={self.email}, projects={len(self.projects)})" #Display User object
