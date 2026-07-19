@@ -2,7 +2,7 @@
 # Import the class Person from person.py for object inheritance 
 from models.person import Person
 
-# User class that inherits from Person class
+# Define User class that inherits from Person class
 class User(Person):
     _id_counter = 1 #Assigns users with unique ID  
     all_users = [] #Stores all User objects
