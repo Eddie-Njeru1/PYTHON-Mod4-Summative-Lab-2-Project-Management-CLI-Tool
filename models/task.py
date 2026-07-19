@@ -1,5 +1,5 @@
 
-# Define a Task class
+# Define a Task class 
 class Task:
     _id_counter = 1 #Assigns task with unique ID  
     all_tasks = [] #Stores all task objects
@@ -37,6 +37,16 @@ class Task:
             if task.title == title:
                 return task #When found
         return None #When not found
+    
+    def to_dict(self): #Convert Task object into dictionary for file saving
+        return {"id": self.id, "title": self.title, "status": self.status, "assigned_to": self.assigned_to}
+
+    @classmethod
+    def from_dict(cls, data, project): #Create a task object from saved dictionary
+        task = cls(data["title"], data["status"], data["assigned_to"], project) #Create a new task using saved data
+        task.id = data["id"]  #restore the original task ID                                     
+        cls._id_counter = max(cls._id_counter, data["id"] + 1) #update ID counter prevent duplications
+        return task #Return new task object
         
     def __repr__(self):
             return f"Task(id={self.id}, title={self.title}, status={self.status}, assigned_to={self.assigned_to})" #Display task object

@@ -1,6 +1,8 @@
 
 # Import the class Person from person.py for object inheritance 
 from models.person import Person
+# Import the project class for object inheritance to get projects from saved data
+from models.project import Project
 
 # Define User class that inherits from Person class
 class User(Person):
@@ -27,6 +29,21 @@ class User(Person):
             if user.name == name:
                 return user
         return None #When no match is found
+    
+    def to_dict(self): #Convert User object into dictionary for file saving
+        return {
+            "id": self.id, "name": self.name, "email": self.email,
+            "projects": [p.to_dict() for p in self.projects], #Convert each project to dictionary
+        }
+    
+    @classmethod
+    def from_dict(cls, data): #Create a user object from saved dictionary
+        user = cls(data["name"], data["email"]) #Creates new user using saved name and email
+        user.id = data["id"] #restore the original user ID
+        cls._id_counter = max(cls._id_counter, data["id"] + 1) #update ID counter prevent duplications
+        for project_data in data["projects"]: #Recreate projects belonging to user
+            Project.from_dict(project_data, user)
+        return user #Return new user object
         
     def __repr__(self):
         return f"user(id={self.id}, name={self.name}, email={self.email}, projects={len(self.projects)})" #Display User object
