@@ -78,12 +78,10 @@ Used for running the project's automated test suite. Install manually if needed:
 ```bash
 pipenv install --dev pytest
 ```
- **Note:** A `requirements.txt` file is included for environments that use `pip`. It contains only the runtime dependencies, while development dependencies remain managed through Pipenv.
-
 # Running the Application
 
 Run all commands from the project root directory.
-**Note:**For testing purposes, there is a placeholder user named "Eddie" with corresponding email, date, tasks, projects, etc. Adjust with new data to add new user
+**Note:** For testing purposes, there is a placeholder user named "Eddie" with corresponding email, date, tasks, projects, etc. Adjust with new data to add new user and test accordingly. 
 
 ## Create a User
 
