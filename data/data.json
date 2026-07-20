@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Alex",
+      "email": "alex@example.com",
+      "projects": [
+        {
+          "id": 1,
+          "title": "CLI Tool",
+          "description": "Build the tool",
+          "due_date": "2026-08-01",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Implement add-task",
+              "status": "Complete.",
+              "assigned_to": "Alex"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
