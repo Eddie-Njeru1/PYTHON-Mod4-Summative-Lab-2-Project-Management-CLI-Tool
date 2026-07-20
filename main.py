@@ -93,6 +93,7 @@ def main(): #To run the CLI
 
 if __name__ == "__main__": #Run the program only when file is executed directly.
     main()
+    
 
 
 
