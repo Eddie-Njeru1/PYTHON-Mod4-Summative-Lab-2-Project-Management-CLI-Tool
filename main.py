@@ -43,43 +43,43 @@ def complete_task(args): #Mark task as completed
     console.print(f"Marked complete: {task}.")
 
 def list_projects(args): #Show project list
-    project = Project.get_all() #get all projects
+    projects = Project.get_all() #get all projects
     if args.user: #filter by user using available username
         project = [p for p in projects if p.owner.name == args.user]
-        table = Table(title="Projects") #Create table to show project details
-        table.add_column("ID"); table.add_column("Tasks") #add columns
-        for project in projects:#add each project's detail to table 
-            table.add_row(str(project.id), project.title, project.owner.name, project.due_date, str(len(project.tasks)))
-            console.print(table)
+    table = Table(title="Projects") #Create table to show project details
+    table.add_column("ID"); table.add_column("Tasks") #add columns
+    for project in projects:#add each project's detail to table 
+        table.add_row(str(project.id), project.title, project.owner.name, project.due_date, str(len(project.tasks)))
+    console.print(table)
 
 def build_parser(): # Build the CLI argument parser
     parser = argparse.ArgumentParser(description="Project Management CLI") #Main parser
     subparsers = parser.add_subparsers(dest="command", required=True) #Sub parser commands
 
     #Define add_user commands
-    p= subparsers.add_parser("add_user")
+    p= subparsers.add_parser("add-user")
     p.add_argument("--name", required=True); p.add_argument("--email", required=True)
     p.set_defaults(func=add_user)
 
     #Define add_project commands
-    p= subparsers.add_parser("add_project")
+    p= subparsers.add_parser("add-project")
     p.add_argument("--user", required=True); p.add_argument("--title", required=True)
-    p.add_argument("--description", required=True); p.add_argument("--due-date", dest="assigned_to", required=True)
+    p.add_argument("--description", required=True); p.add_argument("--due-date", dest="due_date", required=True)
     p.set_defaults(func=add_project)
 
     #Define add_task commands
-    p= subparsers.add_parser("add_task")
+    p= subparsers.add_parser("add-task")
     p.add_argument("--project", required=True); p.add_argument("--title", required=True)
     p.add_argument("--status", required=True); p.add_argument("--assigned-to", dest="assigned_to", required=True)
     p.set_defaults(func=add_task)
     
     #Define complete_task commands
-    p= subparsers.add_parser("complete_task")
+    p= subparsers.add_parser("complete-task")
     p.add_argument("--title", required=True)
     p.set_defaults(func=complete_task)
     
     #Define list_projects commands
-    p= subparsers.add_parser("list_projects")
+    p= subparsers.add_parser("list-projects")
     p.add_argument("--user", required=False)
     p.set_defaults(func=list_projects)
     return parser #Return completed parser
