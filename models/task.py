@@ -25,7 +25,7 @@ class Task:
         self._status = value 
 
     def complete(self): #Check task completion
-        self.status = "complete."
+        self.status = "complete"
         
     @classmethod
     def get_all(cls):
