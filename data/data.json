@@ -1,0 +1,44 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Eddie",
+      "email": "eddie@email.com",
+      "projects": [
+        {
+          "id": 1,
+          "title": "CLI Tool",
+          "description": "Build the tool",
+          "due_date": "2026-08-01",
+          "tasks": [
+            {
+              "id": 1,
+              "title": "Implement add-task",
+              "status": "complete.",
+              "assigned_to": "Eddie"
+            },
+            {
+              "id": 2,
+              "title": "Implement add-task",
+              "status": "pending",
+              "assigned_to": "Eddie"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "CLI Tool",
+          "description": "Build the tool",
+          "due_date": "2026-08-01",
+          "tasks": []
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Eddie",
+      "email": "eddie@email.com",
+      "projects": []
+    }
+  ]
+}

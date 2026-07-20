@@ -45,9 +45,10 @@ def complete_task(args): #Mark task as completed
 def list_projects(args): #Show project list
     projects = Project.get_all() #get all projects
     if args.user: #filter by user using available username
-        project = [p for p in projects if p.owner.name == args.user]
+        projects = [p for p in projects if p.owner.name == args.user]
     table = Table(title="Projects") #Create table to show project details
-    table.add_column("ID"); table.add_column("Tasks") #add columns
+    table.add_column("ID"); table.add_column("Title"); table.add_column("owner") #add columns
+    table.add_column("Due Date"); table.add_column("Tasks")
     for project in projects:#add each project's detail to table 
         table.add_row(str(project.id), project.title, project.owner.name, project.due_date, str(len(project.tasks)))
     console.print(table)

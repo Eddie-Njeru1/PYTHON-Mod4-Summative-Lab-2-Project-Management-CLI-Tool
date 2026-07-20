@@ -7,7 +7,7 @@ from models.task import Task
 
 @pytest.fixture(autouse=True) #Reset model data beofre every test
 def reset():
-    User.all_projects = [] #clear stored users
+    User.all_users = [] #clear stored users
     Project.all_projects = [] #clear stored projects
     Task.all_tasks = [] #clear stored tasks
 
